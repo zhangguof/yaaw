@@ -512,6 +512,12 @@ var YAAW = (function() {
         });
 
         if (uri) {
+          //support hash code!.
+          var magnet_pre_uri = "magnet:?xt=urn:btih:";
+          if(uri.indexOf("http")<0 || uri.indexOf("magnet")<0 || uri.indexOf("ftp")<0)
+          {
+            uri = magnet_pre_uri + uri;
+          }
           ARIA2.madd_task(uri, options);
           YAAW.setting.save_add_task_option(options_save);
         } else if (torrent_file) {
