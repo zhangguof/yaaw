@@ -685,6 +685,16 @@ if (typeof ARIA2=="undefined"||!ARIA2) var ARIA2=(function(){
           result = result.result;
           result["parameterized-uri"] = (result["parameterized-uri"] == "true" ? true : false)
           $("#add-task-option-wrap").empty().append(YAAW.tpl.add_task_option(result));
+          
+          var select = $("#ati-dirs-select").get(0);
+          select.onchange = function()
+          {
+        	var op = this.options[this.selectedIndex];
+        	console.log("dirs on changed:"+op.value);
+        	
+        	var dir = $("#ati-dir").get(0);
+        	dir.value = op.value;
+          }
         }
       );
     },
